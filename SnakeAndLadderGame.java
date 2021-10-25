@@ -20,6 +20,7 @@ public class SnakeAndLadderGame {
     }
 
 
+    // HARD CODED VALUES as user shouldn't have any access to those
     private void initializeLaddersAndSnakes() {
         snakes.add(new Snake(40,10));
         snakes.add(new Snake(99,20));
@@ -30,6 +31,7 @@ public class SnakeAndLadderGame {
 
     public void startGame() {
         int currentPosition = 0;
+        // Acts as an infinite loop until somone wins the GAME
         while (!turn.isEmpty()) {
             Player currentPlayer = turn.poll();
             currentPosition = currentGameSituation.get(currentPlayer);
@@ -38,6 +40,8 @@ public class SnakeAndLadderGame {
             int rolledDiceValue = dice.rollDice();
             System.out.println("Player "+ currentPlayer.id + " got " + rolledDiceValue + " moves");
             int move = rolledDiceValue + currentPosition;
+            
+            // currentPlayer won, so print and break the infinite loop
             if(move == 100) {
                 System.out.println("Player " + currentPlayer.id + " won......wohoooo");
                 break;
